@@ -1,19 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Otus_HomeWork9.Classes
+namespace Otus_HomeWork9
 {
     /// <summary>
     /// Животные
     /// </summary>
-    public class Animal {
+    public class Animal : IMyCloneable<Animal>
+    {
+        public Animal(double weight,bool isPredator,bool isPet,int age)
+        {
+            Weight = weight;
+            IsPredator = isPredator;
+            IsPet = isPet;
+            Age = age;
+        }
         
         /// <summary>
-        /// Масса животного
+        /// Масса животного кг
         /// </summary>
         public double Weight { get; set; }
         /// <summary>
@@ -28,24 +37,37 @@ namespace Otus_HomeWork9.Classes
         /// Возраст животного
         /// </summary>
         public int Age { get; set; }
-
+        public Animal Clone() => new Animal(Weight,IsPredator,IsPet,Age);
     }
     /// <summary>
     /// Млекопитающие
     /// </summary>
-    public class Mammals : Animal
+    public class Mammals : Animal, IMyCloneable<Mammals>
     {
+        public Mammals(bool haveWool, double weight, bool isPredator, bool isPet, int age)
+            :base(weight:weight,isPredator:isPredator,isPet:isPet,age:age)
+        {
+            HaveWool = haveWool;
+        }
         /// <summary>
         /// Имеет ли шерсть
         /// </summary>
         public bool HaveWool { get; set; }
+
+        public Mammals Clone() => new Mammals(bool haveWool, double weight, bool isPredator, bool isPet, int age)
     }
 
     /// <summary>
     /// Рыбы
     /// </summary>
-    public sealed class Fish : Animal
+    public class Fish : Animal
     {
+        public Fish(int finsCount,bool isFishScales, double weight, bool isPredator, bool isPet, int age)
+            : base(weight: weight, isPredator: isPredator, isPet: isPet, age: age)
+        {
+            FinsCount = finsCount;
+            IsFishScales = isFishScales;
+        }
         /// <summary>
         /// Количество плавников
         /// </summary>
@@ -60,6 +82,11 @@ namespace Otus_HomeWork9.Classes
     /// </summary>
     public class Birds : Animal
     {
+        public Birds(bool canFly, double weight, bool isPredator, bool isPet, int age)
+            : base(weight: weight, isPredator: isPredator, isPet: isPet, age: age)
+        {
+            CanFly = canFly;
+        }
         /// <summary>
         /// Может летать
         /// </summary>
