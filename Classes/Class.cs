@@ -20,6 +20,14 @@ namespace Otus_HomeWork9.Classes
         /// Является хишным
         /// </summary>
         public bool IsPredator { get; set; }
+        /// <summary>
+        /// Является домашним
+        /// </summary>
+        public bool IsPet { get; set; }
+        /// <summary>
+        /// Возраст животного
+        /// </summary>
+        public int Age { get; set; }
 
     }
     /// <summary>
@@ -27,7 +35,10 @@ namespace Otus_HomeWork9.Classes
     /// </summary>
     public class Mammals : Animal
     {
-
+        /// <summary>
+        /// Имеет ли шерсть
+        /// </summary>
+        public bool HaveWool { get; set; }
     }
 
     /// <summary>
@@ -49,7 +60,9 @@ namespace Otus_HomeWork9.Classes
     /// </summary>
     public class Birds : Animal
     {
-        
+        /// <summary>
+        /// Может летать
+        /// </summary>
+        public bool CanFly { get; set; }
     }
-
 }
