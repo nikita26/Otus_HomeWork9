@@ -11,7 +11,7 @@ namespace Otus_HomeWork9
     /// <summary>
     /// Животные
     /// </summary>
-    public class Animal : IMyCloneable<Animal>
+    public class Animal
     {
         public Animal(double weight,bool isPredator,bool isPet,int age)
         {
@@ -37,12 +37,12 @@ namespace Otus_HomeWork9
         /// Возраст животного
         /// </summary>
         public int Age { get; set; }
-        public Animal Clone() => new Animal(Weight,IsPredator,IsPet,Age);
     }
+
     /// <summary>
     /// Млекопитающие
     /// </summary>
-    public class Mammals : Animal, IMyCloneable<Mammals>
+    public class Mammals : Animal
     {
         public Mammals(bool haveWool, double weight, bool isPredator, bool isPet, int age)
             :base(weight:weight,isPredator:isPredator,isPet:isPet,age:age)
@@ -53,8 +53,6 @@ namespace Otus_HomeWork9
         /// Имеет ли шерсть
         /// </summary>
         public bool HaveWool { get; set; }
-
-        public Mammals Clone() => new Mammals(bool haveWool, double weight, bool isPredator, bool isPet, int age)
     }
 
     /// <summary>
@@ -77,6 +75,7 @@ namespace Otus_HomeWork9
         /// </summary>
         public bool IsFishScales { get; set; }
     }
+
     /// <summary>
     /// Птицы
     /// </summary>

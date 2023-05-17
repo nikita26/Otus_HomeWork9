@@ -8,6 +8,6 @@ namespace Otus_HomeWork9
 {
     public interface IMyCloneable<T> where T : class
     {
-        T Clone();
+        T MyClone();
     }
 }
